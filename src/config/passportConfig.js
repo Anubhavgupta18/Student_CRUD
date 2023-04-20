@@ -1,5 +1,5 @@
 const JWT = require('passport-jwt');
-const Student = require('../models/student');
+const User = require('../models/user');
 const { JWT_SECRET_KEY } = require('../config/serverConfig.js');
 
 const JwtStrategy = JWT.Strategy;
@@ -12,8 +12,8 @@ const opts = {
 const passportAuth = (passport) =>{
     passport.use(new JwtStrategy(opts , async (jwt_payload , done)=>{
         try {
-            const student = await Student.findById(jwt_payload.id);
-            if(!student){
+            const user = await User.findById(jwt_payload.id);
+            if(!user){
                 done(null , false);
             }else {
                 done(null , user);

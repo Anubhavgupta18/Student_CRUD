@@ -15,7 +15,7 @@ app.use(passport.initialize());
 passportAuth(passport);
 
 app.use('/api', userRoutes);
-app.use('/students', studentRoutes);
+app.use('/api/students', studentRoutes);
 
 app.listen(PORT, async () => {
     console.log(`Server started on PORT:${PORT}`);
